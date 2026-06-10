@@ -1,4 +1,5 @@
-import Team from '../models/teamModel.js';
+import TeamModel from '../models/teamModel.js';
+const Team = (TeamModel && TeamModel.default) ? (TeamModel.default.default || TeamModel.default) : TeamModel;
 
 export const getTeamMembers = async (req, res) => {
   try {

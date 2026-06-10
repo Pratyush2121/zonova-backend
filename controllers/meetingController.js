@@ -1,5 +1,7 @@
-import Meeting from '../models/meetingModel.js';
-import Notification from '../models/notificationModel.js';
+import MeetingModel from '../models/meetingModel.js';
+const Meeting = (MeetingModel && MeetingModel.default) ? (MeetingModel.default.default || MeetingModel.default) : MeetingModel;
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const bookMeeting = async (req, res) => {
   try {

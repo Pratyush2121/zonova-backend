@@ -1,4 +1,5 @@
-import Privacy from '../models/privacyModel.js';
+import PrivacyModel from '../models/privacyModel.js';
+const Privacy = (PrivacyModel && PrivacyModel.default) ? (PrivacyModel.default.default || PrivacyModel.default) : PrivacyModel;
 
 export const getPrivacyContent = async (req, res) => {
   try {

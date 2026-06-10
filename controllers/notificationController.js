@@ -1,4 +1,5 @@
-import Notification from '../models/notificationModel.js';
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const getNotifications = async (req, res) => {
   try {

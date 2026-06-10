@@ -1,12 +1,20 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware.js';
-import Lead from '../models/leadModel.js';
-import Meeting from '../models/meetingModel.js';
-import Project from '../models/projectModel.js';
-import Blog from '../models/blogModel.js';
-import StartupApplication from '../models/startupApplicationModel.js';
-import CareerApplication from '../models/careerApplicationModel.js';
-import Newsletter from '../models/newsletterModel.js';
+import LeadModel from '../models/leadModel.js';
+import MeetingModel from '../models/meetingModel.js';
+import ProjectModel from '../models/projectModel.js';
+import BlogModel from '../models/blogModel.js';
+import StartupApplicationModel from '../models/startupApplicationModel.js';
+import CareerApplicationModel from '../models/careerApplicationModel.js';
+import NewsletterModel from '../models/newsletterModel.js';
+
+const Lead = (LeadModel && LeadModel.default) ? (LeadModel.default.default || LeadModel.default) : LeadModel;
+const Meeting = (MeetingModel && MeetingModel.default) ? (MeetingModel.default.default || MeetingModel.default) : MeetingModel;
+const Project = (ProjectModel && ProjectModel.default) ? (ProjectModel.default.default || ProjectModel.default) : ProjectModel;
+const Blog = (BlogModel && BlogModel.default) ? (BlogModel.default.default || BlogModel.default) : BlogModel;
+const StartupApplication = (StartupApplicationModel && StartupApplicationModel.default) ? (StartupApplicationModel.default.default || StartupApplicationModel.default) : StartupApplicationModel;
+const CareerApplication = (CareerApplicationModel && CareerApplicationModel.default) ? (CareerApplicationModel.default.default || CareerApplicationModel.default) : CareerApplicationModel;
+const Newsletter = (NewsletterModel && NewsletterModel.default) ? (NewsletterModel.default.default || NewsletterModel.default) : NewsletterModel;
 
 const router = express.Router();
 

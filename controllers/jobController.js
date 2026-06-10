@@ -1,4 +1,5 @@
-import Job from '../models/jobModel.js';
+import JobModel from '../models/jobModel.js';
+const Job = (JobModel && JobModel.default) ? (JobModel.default.default || JobModel.default) : JobModel;
 
 export const getJobs = async (req, res) => {
   try {

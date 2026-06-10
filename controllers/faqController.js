@@ -1,4 +1,5 @@
-import FAQ from '../models/faqModel.js';
+import FAQModel from '../models/faqModel.js';
+const FAQ = (FAQModel && FAQModel.default) ? (FAQModel.default.default || FAQModel.default) : FAQModel;
 
 export const getFAQs = async (req, res) => {
   try {

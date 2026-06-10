@@ -1,4 +1,5 @@
-import Project from '../models/projectModel.js';
+import ProjectModel from '../models/projectModel.js';
+const Project = (ProjectModel && ProjectModel.default) ? (ProjectModel.default.default || ProjectModel.default) : ProjectModel;
 
 export const getProjects = async (req, res) => {
   try {

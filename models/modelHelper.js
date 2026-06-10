@@ -66,5 +66,6 @@ export const createModel = (modelName, mongooseSchema) => {
   };
 
   modelInstance.default = modelInstance;
+  modelInstance.__esModule = true;
   return modelInstance;
 };

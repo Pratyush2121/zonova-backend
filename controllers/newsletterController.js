@@ -1,5 +1,7 @@
-import Newsletter from '../models/newsletterModel.js';
-import Notification from '../models/notificationModel.js';
+import NewsletterModel from '../models/newsletterModel.js';
+const Newsletter = (NewsletterModel && NewsletterModel.default) ? (NewsletterModel.default.default || NewsletterModel.default) : NewsletterModel;
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const subscribeNewsletter = async (req, res) => {
   try {

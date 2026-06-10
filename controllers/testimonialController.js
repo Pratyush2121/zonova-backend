@@ -1,4 +1,5 @@
-import Testimonial from '../models/testimonialModel.js';
+import TestimonialModel from '../models/testimonialModel.js';
+const Testimonial = (TestimonialModel && TestimonialModel.default) ? (TestimonialModel.default.default || TestimonialModel.default) : TestimonialModel;
 
 export const getTestimonials = async (req, res) => {
   try {

@@ -1,5 +1,7 @@
-import Lead from '../models/leadModel.js';
-import Notification from '../models/notificationModel.js';
+import LeadModel from '../models/leadModel.js';
+const Lead = (LeadModel && LeadModel.default) ? (LeadModel.default.default || LeadModel.default) : LeadModel;
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const createLead = async (req, res) => {
   try {

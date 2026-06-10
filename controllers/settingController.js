@@ -1,4 +1,5 @@
-import Setting from '../models/settingModel.js';
+import SettingModel from '../models/settingModel.js';
+const Setting = (SettingModel && SettingModel.default) ? (SettingModel.default.default || SettingModel.default) : SettingModel;
 
 export const getSettings = async (req, res) => {
   try {

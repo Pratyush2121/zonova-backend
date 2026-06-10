@@ -1,4 +1,5 @@
-import Blog from '../models/blogModel.js';
+import BlogModel from '../models/blogModel.js';
+const Blog = (BlogModel && BlogModel.default) ? (BlogModel.default.default || BlogModel.default) : BlogModel;
 
 // Helper to convert title to URL-safe slug
 const slugify = (text) => {

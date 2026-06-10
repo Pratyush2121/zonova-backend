@@ -1,5 +1,7 @@
-import StartupApplication from '../models/startupApplicationModel.js';
-import Notification from '../models/notificationModel.js';
+import StartupApplicationModel from '../models/startupApplicationModel.js';
+const StartupApplication = (StartupApplicationModel && StartupApplicationModel.default) ? (StartupApplicationModel.default.default || StartupApplicationModel.default) : StartupApplicationModel;
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const createStartupApplication = async (req, res) => {
   try {

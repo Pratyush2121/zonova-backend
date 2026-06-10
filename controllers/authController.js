@@ -1,6 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/userModel.js';
+import UserModel from '../models/userModel.js';
+
+// Resolve any ESM/CJS interop default wrapping issues safely
+const User = (UserModel && UserModel.default) ? (UserModel.default.default || UserModel.default) : UserModel;
 
 // Helper to sign JWT token
 const generateToken = (id) => {

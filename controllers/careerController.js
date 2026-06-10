@@ -1,5 +1,7 @@
-import CareerApplication from '../models/careerApplicationModel.js';
-import Notification from '../models/notificationModel.js';
+import CareerApplicationModel from '../models/careerApplicationModel.js';
+const CareerApplication = (CareerApplicationModel && CareerApplicationModel.default) ? (CareerApplicationModel.default.default || CareerApplicationModel.default) : CareerApplicationModel;
+import NotificationModel from '../models/notificationModel.js';
+const Notification = (NotificationModel && NotificationModel.default) ? (NotificationModel.default.default || NotificationModel.default) : NotificationModel;
 
 export const applyForJob = async (req, res) => {
   try {
