@@ -1,7 +1,9 @@
-import multer from 'multer';
+import * as multerModule from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+
+const multer = multerModule.default || multerModule;
 
 const getCurrentDir = () => {
   if (typeof __dirname !== 'undefined') {
