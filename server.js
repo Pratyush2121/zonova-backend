@@ -129,4 +129,5 @@ if (!isNetlify) {
   });
 }
 
+app.initApp = initApp;
 export default app;
