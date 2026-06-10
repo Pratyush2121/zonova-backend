@@ -57,7 +57,13 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Setup static folders
-const uploadDir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'uploads');
+const getCurrentDir = () => {
+  if (typeof __dirname !== 'undefined') {
+    return __dirname;
+  }
+  return path.dirname(fileURLToPath(import.meta.url));
+};
+const uploadDir = path.join(getCurrentDir(), 'uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }

@@ -3,7 +3,13 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
-const UPLOAD_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '../uploads');
+const getCurrentDir = () => {
+  if (typeof __dirname !== 'undefined') {
+    return __dirname;
+  }
+  return path.dirname(fileURLToPath(import.meta.url));
+};
+const UPLOAD_DIR = path.join(getCurrentDir(), '../uploads');
 
 // Create upload directory if not exists
 if (!fs.existsSync(UPLOAD_DIR)) {
