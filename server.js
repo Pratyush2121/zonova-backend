@@ -64,8 +64,12 @@ const getCurrentDir = () => {
   return path.dirname(fileURLToPath(import.meta.url));
 };
 const uploadDir = path.join(getCurrentDir(), 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (error) {
+  console.warn("Could not create uploads directory (this is normal in serverless/read-only runtimes):", error.message);
 }
 app.use('/uploads', express.static(uploadDir));
 

@@ -10,15 +10,23 @@ const getCurrentDir = () => {
 };
 const DATA_DIR = path.join(getCurrentDir(), '../data');
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (error) {
+  console.warn("Could not create local data directory (expected in read-only environments):", error.message);
 }
 
 class Collection {
   constructor(name) {
     this.filePath = path.join(DATA_DIR, `${name}.json`);
-    if (!fs.existsSync(this.filePath)) {
-      fs.writeFileSync(this.filePath, JSON.stringify([], null, 2));
+    try {
+      if (!fs.existsSync(this.filePath)) {
+        fs.writeFileSync(this.filePath, JSON.stringify([], null, 2));
+      }
+    } catch (err) {
+      console.warn(`Could not initialize local JSON file for collection ${name}:`, err.message);
     }
   }
 

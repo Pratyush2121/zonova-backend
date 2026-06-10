@@ -12,8 +12,12 @@ const getCurrentDir = () => {
 const UPLOAD_DIR = path.join(getCurrentDir(), '../uploads');
 
 // Create upload directory if not exists
-if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(UPLOAD_DIR)) {
+    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+  }
+} catch (error) {
+  console.warn("Could not create uploads directory (this is normal in serverless/read-only runtimes):", error.message);
 }
 
 const storage = multer.diskStorage({
