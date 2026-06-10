@@ -1,7 +1,7 @@
 import express from 'express';
 import { applyForJob, getCareerApplications, updateCareerApplicationStatus, deleteCareerApplication } from '../controllers/careerController.js';
 import { protect, authorize } from '../middleware/authMiddleware.js';
-import upload from '../middleware/uploadMiddleware.js';
+import { upload } from '../middleware/uploadMiddleware.js';
 
 const router = express.Router();
 
