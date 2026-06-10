@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "o1u6q6r48osflt4zvcpj1d",
+    "name": "Zonova Admin",
+    "email": "admin@zonova.com",
+    "password": "$2a$10$Nho61Rt1u4zok6hPrneN9efbEWVe733n/Q4SR62S3Tm/y9cmVCMv.",
+    "role": "admin",
+    "createdAt": "2026-06-07T10:45:54.331Z",
+    "updatedAt": "2026-06-07T10:45:54.332Z"
+  }
+]

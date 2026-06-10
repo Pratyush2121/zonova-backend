@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "c1sxkfso6fqg0wu5y37sng",
+    "title": "New Lead Submission",
+    "message": "161- Pratyush Mishra from Logiquecode is interested in Lead Generation",
+    "type": "lead",
+    "createdAt": "2026-06-07T10:51:02.084Z",
+    "updatedAt": "2026-06-07T10:51:02.084Z"
+  },
+  {
+    "_id": "8sdnancsshenm1lc17cig",
+    "title": "New Meeting Booking Request",
+    "message": "161- Pratyush Mishra has scheduled a Google Meet for 2026-06-08 at 10:00 AM",
+    "type": "meeting",
+    "createdAt": "2026-06-07T11:32:50.424Z",
+    "updatedAt": "2026-06-07T11:32:50.424Z"
+  }
+]

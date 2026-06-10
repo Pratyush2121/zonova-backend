@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "6exsdkslk69cyafl7uqj84",
+    "title": "Privacy Policy",
+    "content": "# Privacy Policy\n\nZonova Technologies is committed to protecting your privacy. This policy explains how we collect and use your data.\n\n## 1. Information Collection\nWe collect info when you contact us or apply for programs.",
+    "type": "privacy",
+    "createdAt": "2026-06-07T10:51:54.857Z",
+    "updatedAt": "2026-06-07T10:51:54.857Z"
+  },
+  {
+    "_id": "cyl3226v5fuostnsxvd3w",
+    "title": "Terms and Conditions",
+    "content": "# Terms and Conditions\n\nWelcome to Zonova Technologies. By using our website and services, you agree to these terms.\n\n## 1. User Account\nEnsure details provided are accurate.",
+    "type": "terms",
+    "createdAt": "2026-06-07T10:51:54.863Z",
+    "updatedAt": "2026-06-07T10:51:54.866Z"
+  }
+]
