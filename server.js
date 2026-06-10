@@ -73,23 +73,31 @@ try {
 }
 app.use('/uploads', express.static(uploadDir));
 
+// Helper to handle ESM/CommonJS default export interop for routes
+const getRouter = (routeModule) => {
+  if (routeModule && typeof routeModule === 'object' && routeModule.default) {
+    return routeModule.default;
+  }
+  return routeModule;
+};
+
 // API Routes Registration
-app.use('/api/auth', authRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api/blogs', blogRoutes);
-app.use('/api/leads', leadRoutes);
-app.use('/api/meetings', meetingRoutes);
-app.use('/api/startups', startupRoutes);
-app.use('/api/careers', careerRoutes);
-app.use('/api/team', teamRoutes);
-app.use('/api/testimonials', testimonialRoutes);
-app.use('/api/settings', settingRoutes);
-app.use('/api/faqs', faqRoutes);
-app.use('/api/privacy', privacyRoutes);
-app.use('/api/newsletter', newsletterRoutes);
-app.use('/api/notifications', notificationRoutes);
-app.use('/api/analytics', analyticsRoutes);
-app.use('/api/jobs', jobRoutes);
+app.use('/api/auth', getRouter(authRoutes));
+app.use('/api/projects', getRouter(projectRoutes));
+app.use('/api/blogs', getRouter(blogRoutes));
+app.use('/api/leads', getRouter(leadRoutes));
+app.use('/api/meetings', getRouter(meetingRoutes));
+app.use('/api/startups', getRouter(startupRoutes));
+app.use('/api/careers', getRouter(careerRoutes));
+app.use('/api/team', getRouter(teamRoutes));
+app.use('/api/testimonials', getRouter(testimonialRoutes));
+app.use('/api/settings', getRouter(settingRoutes));
+app.use('/api/faqs', getRouter(faqRoutes));
+app.use('/api/privacy', getRouter(privacyRoutes));
+app.use('/api/newsletter', getRouter(newsletterRoutes));
+app.use('/api/notifications', getRouter(notificationRoutes));
+app.use('/api/analytics', getRouter(analyticsRoutes));
+app.use('/api/jobs', getRouter(jobRoutes));
 
 // Root Endpoint
 app.get('/', (req, res) => {
