@@ -14,7 +14,7 @@ export const createModel = (modelName, mongooseSchema) => {
   
   const jsonCollection = getCollection(modelName.toLowerCase() + 's');
 
-  return {
+  const modelInstance = {
     find: async (query = {}) => {
       if (dbType === 'mongodb') {
         // Handle basic text search for regex in Mongoose
@@ -64,4 +64,7 @@ export const createModel = (modelName, mongooseSchema) => {
     mongooseModel: MongooseModel,
     jsonCollection: jsonCollection
   };
+
+  modelInstance.default = modelInstance;
+  return modelInstance;
 };
