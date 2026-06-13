@@ -10,6 +10,7 @@ import rateLimit from 'express-rate-limit';
 import { connectDB } from './config/db.js';
 import { seedAdmin } from './controllers/authController.js';
 import { seedJobs } from './controllers/jobController.js';
+import { seedBlogs } from './controllers/blogController.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 // Route Imports
@@ -115,6 +116,7 @@ export const initApp = async () => {
     await connectDB();
     await seedAdmin();
     await seedJobs();
+    await seedBlogs();
     dbConnected = true;
   }
 };

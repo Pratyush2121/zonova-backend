@@ -8,7 +8,13 @@ export const getProjects = async (req, res) => {
     if (category) filter.category = category;
     if (featured === 'true') filter.featured = true;
 
-    const projects = await Project.find(filter);
+    let projects = await Project.find(filter);
+    
+    const limit = parseInt(req.query.limit) || 0;
+    if (limit > 0) {
+      projects = projects.slice(0, limit);
+    }
+
     res.json({ success: true, projects });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

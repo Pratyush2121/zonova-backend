@@ -3,7 +3,17 @@ const FAQ = (FAQModel && FAQModel.default) ? (FAQModel.default.default || FAQMod
 
 export const getFAQs = async (req, res) => {
   try {
-    const faqs = await FAQ.find({});
+    const { category } = req.query;
+    const filter = {};
+    if (category) filter.category = category;
+
+    let faqs = await FAQ.find(filter);
+
+    const limit = parseInt(req.query.limit) || 0;
+    if (limit > 0) {
+      faqs = faqs.slice(0, limit);
+    }
+
     res.json({ success: true, faqs });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
