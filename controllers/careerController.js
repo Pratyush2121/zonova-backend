@@ -5,19 +5,10 @@ const Notification = (NotificationModel && NotificationModel.default) ? (Notific
 
 export const applyForJob = async (req, res) => {
   try {
-    const { fullName, email, phone, position, coverLetter } = req.body;
+    const { fullName, email, phone, position, resumeUrl, coverLetter } = req.body;
 
-    if (!fullName || !email || !phone || !position) {
-      return res.status(400).json({ success: false, message: 'Please fill all required details' });
-    }
-
-    let resumeUrl = '';
-    if (req.file) {
-      resumeUrl = `/uploads/${req.file.filename}`;
-    } else if (req.body.resumeUrl) {
-      resumeUrl = req.body.resumeUrl;
-    } else {
-      return res.status(400).json({ success: false, message: 'Please upload your resume' });
+    if (!fullName || !email || !phone || !position || !resumeUrl) {
+      return res.status(400).json({ success: false, message: 'Please fill all required details, including the resume link' });
     }
 
     const application = await CareerApplication.create({

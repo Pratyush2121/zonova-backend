@@ -15,8 +15,8 @@ const generateToken = (id) => {
 // Seed a default admin if no user exists
 export const seedAdmin = async () => {
   try {
-    const userCount = await User.countDocuments();
-    if (userCount === 0) {
+    const adminUser = await User.findOne({ email: 'admin@zonova.com' });
+    if (!adminUser) {
       const hashedPassword = await bcrypt.hash('admin123', 10);
       await User.create({
         name: 'Zonova Admin',
