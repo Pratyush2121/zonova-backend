@@ -30,6 +30,7 @@ import newsletterRoutes from './routes/newsletterRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import analyticsRoutes from './routes/analyticsRoutes.js';
 import jobRoutes from './routes/jobRoutes.js';
+import sitemapRoutes from './routes/sitemapRoutes.js';
 
 dotenv.config();
 
@@ -48,13 +49,16 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rate Limiting (Disabled to prevent 429 errors on multi-resource dashboard load)
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: process.env.NODE_ENV === 'production' ? 200 : 10000, // Limit each IP to 200 requests in production, 10000 in dev
-//   message: { success: false, message: 'Too many requests from this IP, please try again after 15 minutes.' }
-// });
-// app.use('/api/', limiter);
+// Rate Limiting (Targeted to protect B2B ingestion routes from spam, without breaking dashboards)
+const spamLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // Limit each IP to 10 submissions per window
+  message: { success: false, message: 'Too many submissions from this IP. Please try again after 15 minutes.' }
+});
+
+app.use('/api/leads', spamLimiter);
+app.use('/api/meetings', spamLimiter);
+app.use('/api/newsletter', spamLimiter);
 
 
 // Setup static folders
@@ -99,6 +103,15 @@ app.use('/api/newsletter', getRouter(newsletterRoutes));
 app.use('/api/notifications', getRouter(notificationRoutes));
 app.use('/api/analytics', getRouter(analyticsRoutes));
 app.use('/api/jobs', getRouter(jobRoutes));
+app.use('/api/sitemaps', getRouter(sitemapRoutes));
+
+// Root XML redirects for SEO compatibility across hosting environments
+app.get('/sitemap.xml', (req, res) => res.redirect('/api/sitemaps/sitemap.xml'));
+app.get('/sitemap-static.xml', (req, res) => res.redirect('/api/sitemaps/sitemap-static.xml'));
+app.get('/blog-sitemap.xml', (req, res) => res.redirect('/api/sitemaps/blog-sitemap.xml'));
+app.get('/portfolio-sitemap.xml', (req, res) => res.redirect('/api/sitemaps/portfolio-sitemap.xml'));
+app.get('/image-sitemap.xml', (req, res) => res.redirect('/api/sitemaps/image-sitemap.xml'));
+app.get('/rss.xml', (req, res) => res.redirect('/api/sitemaps/rss.xml'));
 
 // Root Endpoint
 app.get('/', (req, res) => {
